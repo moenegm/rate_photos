@@ -18,11 +18,26 @@
                     <li class="nav-item">
                         <%= link_to "Posts", posts_path, class:"nav-link" %>
                     </li>
+                    <% if user_signed_in? %>
+                        <li class="nav-item">
+                            <%= link_to '+ New Post', new_post_path, class:"nav-link" %>
+                        </li>
+                        <li class="nav-item">
+                            <%= link_to "Edit User", edit_user_registration_path, class:"nav-link" %>
+                        </li>
+                        <li class="nav-item">
+                            <%= link_to "Log out", destroy_user_session_path, method: :delete, class:"nav-link" %>
+                        </li>
+                    <% else %>
+                        <li class="nav-item">
+                            <%= link_to "Sign Up", new_user_registration_path, class:"nav-link" %>
+                        </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link " href="#">Link</a>
-                    </li>
-
+                        <li class="nav-item">
+                            <%= link_to "Sign in", new_user_session_path, class:"nav-link" %>
+                        </li>
+                    <% end %>
+             
                 </ul>
 
                 <form class="d-flex">
