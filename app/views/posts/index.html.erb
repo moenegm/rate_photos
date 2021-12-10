@@ -2,6 +2,16 @@
 
 <h1>Posts</h1>
 
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <% @posts.each do |post| %>
+        <%= link_to (image_tag post.image, width:400), post %>    
+      <% end %>
+    </div>
+  </div>
+</div>
+
 <table>
   <thead>
     <tr>
