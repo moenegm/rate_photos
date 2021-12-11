@@ -6,23 +6,21 @@
   </div>
   <div class="card-body">
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>          
-      <div class="field form-group">
-        <% f.label :email %><br />
+      <div class="field form-group mb-3">
+        <% f.label :email %>
         <%= f.email_field :email, class:"form-control", placeholder:"example@email.com" %>
       </div>         
-      <div class="field form-group">
-        <% f.label :password %><br />
+      <div class="field form-group mb-2">
+        <% f.label :password %>
         <%= f.password_field :password, class:"form-control", placeholder:"current password" %>
       </div>
-      </br>
       <% if devise_mapping.rememberable? %>
-        <div class="field form-group text-start">
+        <div class="field form-group text-start mb-5">
           <%= f.check_box :remember_me, class:"form-check-input"  %>
           <%= f.label :remember_me %>
         </div>
       <% end %>
-      </br>
-      <div class="actions">
+      <div class="actions d-grid gap-2 mb-3">
         <%= f.submit "Log in", class:"btn btn-primary" %>
       </div>
     <% end %>
