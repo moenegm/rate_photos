@@ -1,3 +1,5 @@
+</br>
+</br>
 <%= form_with(model: post) do |form| %>
   <% if post.errors.any? %>
     <div id="error_explanation">
@@ -10,48 +12,48 @@
       </ul>
     </div>
   <% end %>
+  <div class="col align-self-center card">
+    <div class="card-header text-center">
+      + New Post
+    </div>
+    <div class="card-body">        
+      <div class="field form-group mb-3">
+        <div class="field form-group text-center mb-3">
+          <%= form.file_field :image, class:"form-control mb-4", placeholder:"Choose an Image" %>
+        </div>
 
-  <div class="field">
-    <%= form.label :image %>
-    <%= form.file_field :image %>
-  </div>
+        <div class="field form-group mb-3">
+          <%= form.text_field :name, class:"form-control", placeholder:"Name the post (something short)" %>
+        </div>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
+        <div class="field form-group mb-3">
+          <%= form.text_field :iso, class:"form-control", placeholder:"ISO Number" %>
+        </div>
 
-  <div class="field">
-    <%= form.label :iso %>
-    <%= form.text_field :iso %>
-  </div>
+        <div class="field form-group mb-3">
+          <%= form.text_field :shutter_speed, class:"form-control", placeholder:"Shutter Speed (1/200)" %>
+        </div>
 
-  <div class="field">
-    <%= form.label :shutter_speed %>
-    <%= form.text_field :shutter_speed %>
-  </div>
+        <div class="field form-group mb-3">
+          <%= form.text_field :appature, class:"form-control", placeholder:"Appature Decimal (4.0)" %>
+        </div>
 
-  <div class="field">
-    <%= form.label :appature %>
-    <%= form.text_field :appature %>
-  </div>
+        <div class="field form-group mb-3">
+          <%= form.text_field :composition, class:"form-control", placeholder:"Composition: Rule of third, centered, foreground, etc" %>
+        </div>
 
-  <div class="field">
-    <%= form.label :composition %>
-    <%= form.text_field :composition %>
-  </div>
+        <div class="field form-group mb-3">
+          <%= form.text_field :location, class:"form-control", placeholder:"Photo Location: Seattle, New York, China" %>
+        </div>
 
-  <div class="field">
-    <%= form.label :location %>
-    <%= form.text_field :location %>
-  </div>
+        <div class="field form-group mb-3">
+          <%= form.text_area :description, class:"form-control", placeholder:"Breif Description/More Information." %>
+        </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+        <div class="actions d-grid gap-2 mb-3"">
+          <%= form.submit class:"btn btn-primary" %>
+        </div>
+      </div>
+    </div>
   </div>
 <% end %>
