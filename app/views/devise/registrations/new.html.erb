@@ -10,27 +10,24 @@
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
 
-      <div class="field form-group">
+      <div class="field form-group mb-3">
           <%= f.text_field :first_name, autofocus: true, autocomplete: "name", class:"form-control mb-3", placeholder:"First Name" %>
       </div>  
 
-      <div class="field form-group">
+      <div class="field form-group mb-3">
           <%= f.text_field :last_name, autofocus: true, autocomplete: "name", class:"form-control mb-3", placeholder:"Last Name" %>
       </div>   
 
-      <div class="field form-group">
+      <div class="field form-group mb-3">
         <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control mb-3", placeholder:"Email"  %>
       </div>
 
-      <div class="field form-group">
-        <% if @minimum_password_length %>
-          <em class="field form-group">(<%= @minimum_password_length %> characters minimum)</em>
-        <% end %><br />
-        <%= f.password_field :password, autocomplete: "new-password", class:"form-control mb-3", placeholder:"Password"  %>
+      <div class="field form-group mb-3">
+        <%= f.password_field :password, autocomplete: "new-password", class:"form-control mb-3", placeholder:"Password: #{@minimum_password_length} characters minimum" %>
       </div>
     
-      <div class="field form-group">
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control mb-3", placeholder:"New Password"  %>
+      <div class="field form-group mb-3">
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control mb-3", placeholder:"New Password: #{@minimum_password_length} characters minimum"  %>
       </div>
 
       <div class="field form-group text-center mb-3">
