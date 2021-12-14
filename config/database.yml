@@ -20,6 +20,17 @@ test:
   <<: *default
   database: rate_test
 
+# production:
+#   <<: *default
+#   database: rate_prod
+
 production:
-  <<: *default
-  database: rate_prod
+url: <%= ENV['DATABASE_URL'] %>
+
+# production:
+#   <<: *default
+#   database: <%= ENV['RDS_DATABASE'] %>
+#   username: <%= ENV['RDS_USERNAME'] %>
+#   password: <%= ENV['RDS_PASSWORD'] %>
+#   host: <%= ENV['RDS_HOST'] %>
+#   port: 5432
