@@ -50,6 +50,10 @@
           <%= form.text_area :description, class:"form-control", placeholder:"Breif Description/More Information." %>
         </div>
 
+        <div class="field form-group mb-3">
+          <%= form.number_field :user_id, id: :post_user_id, class:"form-control", value:current_user.id, type: :hidden%>
+        </div>
+
         <div class="actions d-grid gap-2 mb-3"">
           <%= form.submit class:"btn btn-primary" %>
         </div>

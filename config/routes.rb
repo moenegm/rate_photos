@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :users
+  get 'users/show'
+  devise_for :users, controllers: {
+        sessions: 'users/sessions'}
+
   resources :posts
-  root 'home#index'
-  get 'home/profile'
+  root 'posts#index'
+  #get 'posts/profile'
 end
  
