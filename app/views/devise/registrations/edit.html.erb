@@ -6,7 +6,7 @@
   <div class="card-body">
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-      <%= render "devise/shared/error_messages", resource: resource %>
+      <%= devise_error_messages! %>
       <div class="field form-group mb-3">
           <%= f.text_field :first_name, autofocus: true, autocomplete: "name", class:"form-control mb-3", placeholder:"First Name" %>
       </div>  
@@ -38,11 +38,6 @@
       <div class="field form-group text-center mb-3">
         <%= f.file_field :avatar, class:"form-control mb-4", placeholder:"Choose an Avatar" %>
       </div>
-
-      <div class="field form-group mb-3 text-center">
-        <%= f.label :birthday %><br />
-        <%= f.date_select :birthday, :start_year=>1900, class:"form-control mb-4"%>
-      </div> 
 
       <div class="actions">
         <%= f.submit "Update", class:"btn btn-primary" %>

@@ -60,7 +60,7 @@ class PostsController < ApplicationController
 
   def correct_user
     @post = current_user.posts.find_by(id: params[:id])
-    redirect_to posts_path, notice: "No, Just No!" if @post.nil?
+    redirect_to posts_path, notice: "You do not have permission to modify this post" if @post.nil?
   end
 
   private
