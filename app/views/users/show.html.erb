@@ -2,8 +2,8 @@
 <div class="container">
     <div class="row text-center">
         <div class="col justify-content-center"> 
-            <% unless @user.avatar %>
-                <%= link_to image_tag(@user.avatar, class:"avatar mb-3", border: 0) %>
+            <% if @user.avatar.present? %>
+                <%= link_to image_tag(@user.avatar, class:"avatar mb-3", radius: 0) %>
             <% else %>
                 <div class="avatar mb-3 default_avatar"></div>
             <% end %>

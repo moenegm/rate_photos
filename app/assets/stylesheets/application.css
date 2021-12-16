@@ -22,10 +22,12 @@
 .avatar {
     width: 200px; /* You can set the dimensions to whatever you want */
     height: 200px;
+    border-radius: 50%;
     object-fit: cover;
 }
 
 .avatar {
     background-image: url("default_avatar.jpeg");
     background-size: cover;
+    border-radius: 50%;
 }
