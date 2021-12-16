@@ -1,44 +1,67 @@
-<p>
-  <%= image_tag @post.image, width:500 %>
-</p>
+</br>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <%= image_tag @post.image, width:500 %>
+    </div>
+    <div class="col">
+      <table class="table table-striped">
+        <tbody>
+          <tr>
+            <th scope="row">Name</th>
+            <td><%= @post.name %></td>
+          </tr>
+          <tr>
+            <th scope="row">ISO</th>
+            <td><%= @post.iso %></td>
+          </tr>
+          <tr>
+            <th scope="row">Shutter speed:</th>
+            <td><%= @post.shutter_speed %></td>
+          </tr> 
+          <th scope="row">Appature</th>
+            <td><%= @post.appature %></td>
+          </tr>
+          <tr>
+            <th scope="row">Composition</th>
+            <td><%= @post.composition %></td>
+          </tr>
+          <tr>
+            <th scope="row">Location</th>
+            <td><%= @post.location %></td>
+          </tr>
+          <tr>
+            <th scope="row">Description</th>
+            <td><%= @post.description %></td>
+          </tr>
+          <tr>
+            <th scope="row">Photographer</th>
+            <td>
+              <% first_name = User.find_by(id: (@post.user_id)).first_name %>
+              <% last_name = User.find_by(id: (@post.user_id)).last_name %>
+              <%= link_to "#{first_name} #{last_name}", user_path(@post.user_id), class:"nounderline"%>
+            </td>
+          </tr>
+          <% if @post.user_id == current_user.id%>
+            <tr>
+              <td colspan="2">
+                <%= link_to 'Edit', edit_post_path(@post), class:"btn btn-secondary" %>
+                <%= link_to 'Delete', @post, :method => :delete, :confirm => "Are you sure?", class:"btn btn-danger" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @post.name %>
-</p>
 
-<p>
-  <strong>Iso:</strong>
-  <%= @post.iso %>
-</p>
 
-<p>
-  <strong>Shutter speed:</strong>
-  <%= @post.shutter_speed %>
-</p>
 
-<p>
-  <strong>Appature:</strong>
-  <%= @post.appature %>
-</p>
 
-<p>
-  <strong>Composition:</strong>
-  <%= @post.composition %>
-</p>
 
-<p>
-  <strong>Location:</strong>
-  <%= @post.location %>
-</p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @post.description %>
-</p>
 
-<%= link_to 'Edit', edit_post_path(@post) %>
-<%#= link_to 'Back', posts_path %> 
-<% if @post.user_id == current_user.id%>
-   | <%= link_to 'Delete', @post, :method => :delete, :confirm => "Are you sure?" %>
-<% end %>
+
+

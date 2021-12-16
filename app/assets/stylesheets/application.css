@@ -31,3 +31,7 @@
     background-size: cover;
     border-radius: 50%;
 }
+
+.nounderline {
+  text-decoration: none !important
+}
