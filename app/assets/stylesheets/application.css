@@ -24,3 +24,8 @@
     height: 200px;
     object-fit: cover;
 }
+
+.avatar {
+    background-image: url("default_avatar.jpeg");
+    background-size: cover;
+}
