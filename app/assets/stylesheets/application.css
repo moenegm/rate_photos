@@ -27,12 +27,6 @@
     object-fit: cover;
 }
 
-.avatar {
-    background-image: url("default_avatar.jpeg");
-    background-size: cover;
-    border-radius: 50%;
-}
-
 .nounderline {
   text-decoration: none !important
 }

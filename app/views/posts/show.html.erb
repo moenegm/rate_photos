@@ -16,10 +16,11 @@
             <td><%= @post.iso %></td>
           </tr>
           <tr>
-            <th scope="row">Shutter speed:</th>
+            <th scope="row">Shutter speed</th>
             <td><%= @post.shutter_speed %></td>
-          </tr> 
-          <th scope="row">Appature</th>
+          </tr>
+          <tr> 
+            <th scope="row">Appature</th>
             <td><%= @post.appature %></td>
           </tr>
           <tr>
@@ -39,10 +40,11 @@
             <td>
               <% first_name = User.find_by(id: (@post.user_id)).first_name %>
               <% last_name = User.find_by(id: (@post.user_id)).last_name %>
-              <%= link_to "#{first_name} #{last_name}", user_path(@post.user_id), class:"nounderline"%>
+              <% photographer = first_name +" "+ last_name %>
+              <%= link_to "#{photographer}", user_path(@post.user_id), class:"nounderline"%>
             </td>
           </tr>
-          <% if @post.user_id == current_user.id%>
+          <% if user_signed_in? && @post.user_id == current_user.id%>
             <tr>
               <td colspan="2">
                 <%= link_to 'Edit', edit_post_path(@post), class:"btn btn-secondary" %>
@@ -50,6 +52,7 @@
               </td>
             </tr>
           <% end %>
+
         </tbody>
       </table>
     </div>
