@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_one_attached :avatar
 
   has_many :posts
+  has_many :ratings
 
   #validations
   validates :first_name, presence: true

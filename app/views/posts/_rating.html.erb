@@ -1,0 +1,25 @@
+</br>
+</br>
+  <div class="col align-self-center card">
+    <div class="card-header text-center">
+      Rate The Photo
+    </div>
+    <div class="card-body">        
+        <div class="field form-group mb-3">
+
+            <%= form_for [@post] do |f| %>
+                <%= f.fields_for :ratings, @post.ratings.build do |builder| %>
+                    <fieldset>
+                        <% for i in 1..5 %>
+                        <%= builder.radio_button :rating, i %><%= i %>
+                        <% end %>
+                    </fieldset>
+                <% end %>
+                <div class="actions d-grid gap-2 mb-3"">
+                    <%=f.submit "Rate" %>
+                </div>
+            <% end %>
+
+        </div>
+    </div>
+  </div>
