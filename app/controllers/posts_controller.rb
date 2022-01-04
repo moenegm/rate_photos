@@ -12,6 +12,7 @@ class PostsController < ApplicationController
   def show
   @post = Post.find(params[:id])
   @rate = @post.ratings.all.average(:rating)
+  @ratecount = @post.ratings.all.count(:rating)
   end
 
   # GET /posts/new
