@@ -6,19 +6,17 @@ class PostsController < ApplicationController
   # GET /posts or /posts.json
   def index
     @posts = Post.all
-    @ratings = Rating.all
   end
 
   # GET /posts/1 or /posts/1.json
   def show
-    #@rate = @post.ratings.all
-    #@rate = Rating.where(post_id: @post.id).group("rating").count
+  @post = Post.find(params[:id])
+  @rate = @post.ratings.all.average(:rating)
   end
 
   # GET /posts/new
   def new
     @post = current_user.posts.build
-    @rating = Rating.new
   end
 
   # GET /posts/1/edit
