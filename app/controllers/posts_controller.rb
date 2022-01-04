@@ -46,7 +46,8 @@ class PostsController < ApplicationController
     
     respond_to do |format|
       if @post.update(post_params)
-        @rating = Rating.find_or_create_by(user: current_user, post: @post, rating: params[:post][:ratings][:rating])
+
+        @rating = Rating.find_or_create_by(user: current_user, post: @post, rating: params[:ratings])
         @rating.save!
 
         format.html { redirect_to @post, notice: "Post was successfully updated." }
@@ -81,6 +82,6 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:name, :iso, :shutter_speed, :appature, :composition, :location, :description, :image, :user_id, ratings_attributes: [:rating])
+      params.fetch(:post, {}).permit(:name, :iso, :shutter_speed, :appature, :composition, :location, :description, :image, :user_id, ratings_attributes: [:rating])
     end
 end

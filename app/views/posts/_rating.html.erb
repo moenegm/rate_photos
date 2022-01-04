@@ -1,25 +1,36 @@
 </br>
 </br>
-  <div class="col align-self-center card">
-    <div class="card-header text-center">
-      Rate The Photo
-    </div>
-    <div class="card-body">        
-        <div class="field form-group mb-3">
+<div class="col align-self-center card">   
+    <div class="field form-group mb-3"> 
+        <%= form_for [@post] do |f| %>
+            <div class="card-header text-center">
+                Rate The Photo
+            </div>
 
-            <%= form_for [@post] do |f| %>
-                <%= f.fields_for :ratings, @post.ratings.build do |builder| %>
-                    <fieldset>
-                        <% for i in 1..5 %>
-                        <%= builder.radio_button :rating, i %><%= i %>
-                        <% end %>
-                    </fieldset>
-                <% end %>
-                <div class="actions d-grid gap-2 mb-3"">
-                    <%=f.submit "Rate" %>
+            <div class="card-body text-center">        
+                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                    <%= f.radio_button :ratings, 1, :type => "radio", :class => "btn-check", :name => "ratings", :id => "btnradio1", :autocomplete => "off" %>
+                    <%= f.label :ratings, "1", :value => 1, :class => "btn btn-outline-danger",  :for => "btnradio1"  %>
+                    
+                    <%= f.radio_button :ratings, 2, :type => "radio", :class => "btn-check", :name => "ratings", :id => "btnradio2", :autocomplete => "off" %>
+                    <%= f.label :ratings, "2", :value => 2, :class => "btn btn-outline-warning",  :for => "btnradio2"  %>
+                    
+                    <%= f.radio_button :ratings, 3, :type => "radio", :class => "btn-check", :name => "ratings", :id => "btnradio3", :autocomplete => "off" %>
+                    <%= f.label :ratings, "3", :value => 3, :class => "btn btn-outline-success",  :for => "btnradio3"  %>
+                    
+                    <%= f.radio_button :ratings, 4, :type => "radio", :class => "btn-check", :name => "ratings", :id => "btnradio4", :autocomplete => "off" %>
+                    <%= f.label :ratings, "4", :value => 4, :class => "btn btn-outline-info",  :for => "btnradio4"  %>
+                    
+                    <%= f.radio_button :ratings, 5, :type => "radio", :class => "btn-check", :name => "ratings", :id => "btnradio5", :autocomplete => "off" %>
+                    <%= f.label :ratings, "5", :value => 5, :class => "btn btn-outline-primary",  :for => "btnradio5"  %>        
                 </div>
-            <% end %>
+            </div>
 
-        </div>
+            <div class="card-footer">
+                <div class="actions d-grid gap-2 mb-3"">
+                    <%=f.submit "Rate", :class => "btn btn-secondary" %>
+                </div>
+            </div>
+        <% end %>
     </div>
-  </div>
+</div>
