@@ -12,7 +12,7 @@ class PostsController < ApplicationController
   # GET /posts/1 or /posts/1.json
   def show
     #@rate = @post.ratings.all
-    @rate = Rating.where(post_id: @post.id).group("rating").count
+    #@rate = Rating.where(post_id: @post.id).group("rating").count
   end
 
   # GET /posts/new
