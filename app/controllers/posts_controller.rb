@@ -10,9 +10,10 @@ class PostsController < ApplicationController
 
   # GET /posts/1 or /posts/1.json
   def show
-  @post = Post.find(params[:id])
-  @rate = @post.ratings.all.average(:rating)
-  @ratecount = @post.ratings.all.count(:rating)
+    @rating_user_id = Rating.where("post_id = ?", params[:id]).select( "user_id, rating")
+    @post = Post.find(params[:id])
+    @rate = @post.ratings.all.average(:rating)
+    @ratecount = @post.ratings.all.count(:rating)
   end
 
   # GET /posts/new
