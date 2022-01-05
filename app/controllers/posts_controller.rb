@@ -16,13 +16,13 @@ class PostsController < ApplicationController
     begin
       @next = Post.find((params[:id]).to_i + 1) 
     rescue ActiveRecord::RecordNotFound => e
-      @next = nil
+      @next = Post.first
     end
 
     begin
       @previous = Post.find((params[:id]).to_i - 1)
     rescue ActiveRecord::RecordNotFound => e
-      @previous = nil
+      @previous = Post.last
     end
 
     @rate = @post.ratings.all.average(:rating)

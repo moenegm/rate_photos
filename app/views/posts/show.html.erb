@@ -90,7 +90,12 @@
           </div>
         <% end %> 
       <% elsif !user_signed_in? %>
-        <p> Please sign in to rate some photos </p>
+        
+        <div class="card-footer text-center">
+          Please sign in to rate some photos 
+          <%= link_to "Sign in", new_user_session_path, class:"nav-link" %>
+        </div>
+       
       <% end %>       
 
     </div>
