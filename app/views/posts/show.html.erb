@@ -63,11 +63,15 @@
         </tbody>
       </table>
 
-      <% if !post_rated_users(@rating_user_id).include?(current_user.id) %>
-        <%= render 'rating', post: @post %>
-      <% elsif  post_rated_users(@rating_user_id).include?(current_user.id) %>
-        <%= "You have already gave this post a #{already_post_rating(@rating_user_id)} rating"%> 
-      <% end %> 
+      <% if user_signed_in? %>
+        <% if !post_rated_users(@rating_user_id).include?(current_user.id) %>
+          <%= render 'rating', post: @post %>
+        <% elsif  post_rated_users(@rating_user_id).include?(current_user.id) %>
+          <%= "You have already gave this post a #{already_post_rating(@rating_user_id)} rating"%> 
+        <% end %> 
+      <% elsif !user_signed_in? %>
+        <p> Please sign in to rate some photos </p>
+      <% end %>       
 
     </div>
   </div>
