@@ -1,4 +1,7 @@
 </br>
+
+
+
 <div class="container">
   <div class="row">
     <div class="col">
@@ -7,7 +10,9 @@
           <%= image_tag @post.image, width:500 %>
         </div>
         <div class="card-footer">
+
           <%= "Rating: #{@rate}(#{@ratecount})" %>
+
         </div>
       </div>
     </div>
@@ -62,12 +67,27 @@
 
         </tbody>
       </table>
+      <div class="row">
+        <div class="col">
+          <% if @previous %>
+            <%= link_to "", @previous, class: "bi bi-arrow-left", style: "font-size: 3rem; color: cornflowerblue;" %>
+          <% end %>
+        </div>
+        <div class="col text-end">
+          <% if @next %>
+            <%= link_to "", @next, class: "bi bi-arrow-right", style: "font-size: 3rem; color: cornflowerblue;" %>
+          <% end %>
+        </div>
+      </div>
+    
 
       <% if user_signed_in? %>
         <% if !post_rated_users(@rating_user_id).include?(current_user.id) %>
           <%= render 'rating', post: @post %>
         <% elsif  post_rated_users(@rating_user_id).include?(current_user.id) %>
-          <%= "You have already gave this post a #{already_post_rating(@rating_user_id)} rating"%> 
+          <div class="card-footer text-center">
+            <%= "You have already gave this post a #{already_post_rating(@rating_user_id)} rating"%>
+          </div>
         <% end %> 
       <% elsif !user_signed_in? %>
         <p> Please sign in to rate some photos </p>
