@@ -6,7 +6,7 @@
         </div>
     </div>
 
-    <div class="row">       
+    <div class="row">
         <% @posts.each do |post| %>
             <div class="col-md-auto">
                 <%= link_to image_tag(post.image, class:"img mb-4"), post %> 
