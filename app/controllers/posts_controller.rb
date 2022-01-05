@@ -5,7 +5,7 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    @posts = Post.joins('INNER JOIN (SELECT post_id, AVG(rating) avg_rating FROM ratings GROUP BY post_id) r ON r.post_id = posts.id').order('r.avg_rating DESC')
+    @posts = Post.joins('INNER JOIN (SELECT post_id, AVG(rating) avg_rating, COUNT(rating) rating_count FROM ratings GROUP BY post_id) r ON r.post_id = posts.id').order('r.avg_rating DESC, r.rating_count DESC')
   end
 
   # GET /posts/1 or /posts/1.json
