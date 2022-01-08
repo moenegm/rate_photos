@@ -4,15 +4,3 @@
 // that code so it'll be compiled.
 //= require local-time
 
-import Rails from "@rails/ujs"
-import Turbolinks from "turbolinks"
-import * as ActiveStorage from "@rails/activestorage"
-import "channels"
-import "trix"
-import "@rails/actiontext"
-import LocalTime from "local-time"
-
-LocalTime.start()
-Rails.start()
-Turbolinks.start()
-ActiveStorage.start()

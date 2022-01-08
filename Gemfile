@@ -3,7 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.3'
 
-gem 'rails', '7.0.1'
+gem "rails", github: "rails/rails"
+#gem 'rails', '7.0.1'
 gem 'pg', '~> 1.2', '>= 1.2.3'
 gem 'puma', '~> 5.0'
 gem 'sass-rails', '>= 6'
