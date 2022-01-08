@@ -10,6 +10,7 @@ class SupportsController < ApplicationController
 
   # GET /supports/1 or /supports/1.json
   def show
+    @support = Support.find(params[:id])
   end
 
   # GET /supports/new

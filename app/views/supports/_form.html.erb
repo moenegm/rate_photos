@@ -11,9 +11,17 @@
     </div>
   <% end %>
 
+<select class="form-select" aria-label="Default select example">
+  <option selected>Open this select menu</option>
+  <option value="1">One</option>
+  <option value="2">Two</option>
+  <option value="3">Three</option>
+</select>
+
+
   <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+    <%= form.label "Support Type", style: "display: block" %>
+    <%= form.select :name, options_for_select([["Select One", ""], "Bug", "Question", "Feedback", "Review", "Other"]), :class => 'genForm_dropBox' %>
   </div>
 
   <div>

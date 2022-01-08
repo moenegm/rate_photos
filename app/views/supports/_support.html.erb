@@ -1,21 +1,27 @@
 <div id="<%= dom_id support %>">
-  <p>
-    <strong>Name:</strong>
-    <%= support.name %>
-  </p>
-
-  <p>
-    <strong>Content:</strong>
-    <%= support.content %>
-  </p>
-
-  <p>
-    Posted <%= time_tag support.created_at, "data-local": "time-ago" %>
-  </p>
-
-  <p>
-    <strong>Status:</strong>
-      <%= support.status %>
-  </p>
-
+  <div class="card mb-5">
+    <div class="card-header">
+      <div class="row">
+        <div class="col">
+          <%= support.name %>
+        </div>
+        <div class="col text-end">
+          From: <%= link_to "#{User.find(support.id).first_name} #{User.find(support.id).first_name}", user_path(support.id), class:"nounderline"%>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <%= support.content %>
+    </div>
+    <div class="card-footer text-muted">
+      <div class="row">
+        <div class="col">
+          <%= link_to "Show this support", support, class:"btn btn-outline-secondary btn-sm" %>
+        </div>
+        <div class="col text-end">
+          Posted <%= time_tag support.created_at, "data-local": "time-ago" %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
