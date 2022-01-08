@@ -1,9 +1,21 @@
 //= require actiontext
 @import "./actiontext.scss";
-@import "users";
-@import "tlks";
-@import "spkrs";
-@import "shared";
+@import "trix";
 // Custom bootstrap variables must be set or imported *before* bootstrap.
-@import "bootstrap";
-@import "components/index";
+ .img {
+    width: 300px; /* You can set the dimensions to whatever you want */
+    height: 300px;
+    object-fit: cover;
+}
+
+.avatar {
+    width: 200px; /* You can set the dimensions to whatever you want */
+    height: 200px;
+    border-radius: 50%;
+    margin: auto;
+    object-fit: cover;
+}
+
+.nounderline {
+  text-decoration: none !important
+}
