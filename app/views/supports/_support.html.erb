@@ -10,8 +10,12 @@
   </p>
 
   <p>
+    Posted <%= time_tag support.created_at, "data-local": "time-ago" %>
+  </p>
+
+  <p>
     <strong>Status:</strong>
-    <%= support.status %>
+      <%= support.status %>
   </p>
 
 </div>

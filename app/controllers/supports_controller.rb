@@ -1,5 +1,7 @@
 class SupportsController < ApplicationController
   before_action :set_support, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :correct_user, only: [:edit, :destroy]
 
   # GET /supports or /supports.json
   def index
@@ -12,7 +14,7 @@ class SupportsController < ApplicationController
 
   # GET /supports/new
   def new
-    @support = Support.new
+    @support = current_user.supports.build
   end
 
   # GET /supports/1/edit
@@ -21,7 +23,7 @@ class SupportsController < ApplicationController
 
   # POST /supports or /supports.json
   def create
-    @support = Support.new(support_params)
+    @support = current_user.supports.build(support_params)
 
     respond_to do |format|
       if @support.save
@@ -57,6 +59,11 @@ class SupportsController < ApplicationController
     end
   end
 
+  def correct_user
+    @support = current_user.supports.find_by(id: params[:id])
+    redirect_to supports_path, notice: "You do not have permission to modify this post" if @support.nil?
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_support
@@ -65,6 +72,6 @@ class SupportsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def support_params
-      params.require(:support).permit(:name, :content, :status)
+      params.require(:support).permit(:name, :content, :status, :user_id)
     end
 end

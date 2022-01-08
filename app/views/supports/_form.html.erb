@@ -18,12 +18,16 @@
 
   <div>
     <%= form.label :content, style: "display: block" %>
-    <%= form.text_area :content %>
+    <%= form.rich_text_area :content %>
   </div>
 
   <div>
     <%= form.label :status, style: "display: block" %>
     <%= form.check_box :status %>
+  </div>
+
+  <div class="field form-group mb-3">
+    <%= form.number_field :user_id, id: :support_user_id, class:"form-control", value:current_user.id%>
   </div>
 
   <div>

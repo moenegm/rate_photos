@@ -1,14 +1,21 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Supports</h1>
 
-<div id="supports">
-  <% @supports.each do |support| %>
-    <%= render support %>
-    <p>
-      <%= link_to "Show this support", support %>
-    </p>
-  <% end %>
+
+<div class="container">
+    <div class="row justify-content-start">
+        <h1>Supports</h1>
+        <div class="col">
+            <%= link_to '+ New Support Post', new_support_path, class:"btn btn-secondary mb-3" %>
+        </div>
+    </div>
+
+    <div class="row">
+      <% @supports.each do |support| %>
+        <%= render support %>
+        <p>
+          <%= link_to "Show this support", support %>
+        </p>
+      <% end %>    
+    </div>
 </div>
-
-<%= link_to "New support", new_support_path %>
