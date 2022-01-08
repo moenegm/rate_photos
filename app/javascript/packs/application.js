@@ -4,3 +4,5 @@
 // that code so it'll be compiled.
 //= require local-time
 
+import "@hotwired/turbo-rails";
+import "controllers";
