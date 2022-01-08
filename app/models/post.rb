@@ -1,10 +1,10 @@
 class Post < ApplicationRecord
     has_one_attached :image
     has_many :ratings
-    
+    has_rich_text :content
     belongs_to :user
 
-      #validations
+    #validations
     validates :image, presence: true
     validates :name, presence: true
     validates :iso, presence: true
