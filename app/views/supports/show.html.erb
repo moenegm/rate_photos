@@ -1,10 +1,12 @@
 <p style="color: green"><%= notice %></p>
-
+</br>
+</br>
+ <%= link_to "Back to supports", supports_path, class: "nounderline bi bi-arrow-left", style: "font-size: 1.2rem; color: cornflowerblue;" %>
+</br>
+</br>
 <%= render @support %>
 
-<div>
-  <%= link_to "Edit this support", edit_support_path(@support) %> |
-  <%= link_to "Back to supports", supports_path %>
-
-  <%= button_to "Destroy this support", @support, method: :delete %>
-</div>
+<% if user_signed_in? && @support.user_id == current_user.id%>
+      <%= link_to 'Edit', edit_support_path(@support), class:"btn btn-secondary" %>
+      <%= link_to 'Delete', @support, :method => :delete, :confirm => "Are you sure?", class:"btn btn-danger" %>
+<% end %>

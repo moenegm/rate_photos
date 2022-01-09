@@ -12,12 +12,11 @@
   <% end %>
 
   <div class="mb-3">
-    <%= form.label "Support Type: ", class:"form-label" %>
-    <%= form.select :name, options_for_select([["Bug", ""], "Question", "Feedback", "Review", "Other"]), class: "form-select", id:"exampleFormControlInput1" %>
+    <%= form.select :name, options_for_select([["Select Support Type", ""], "Bug", "Question", "Feedback", "Review", "Other"]), class: "form-select", id:"exampleFormControlInput1" %>
   </div>
 
-  <div class="mb-3">
-    <%= form.rich_text_area :content, class:"form-control", id:"exampleFormControlTextarea1", rows:"3", placeholder:"Please provide as much details as possible"  %>
+  <div class="mb-3" data-controller="trix">
+    <%= form.text_area :content, class:"form-control", id:"exampleFormControlTextarea1", rows:"3", placeholder:"Please provide as much details as possible"  %>
   </div>
 
   <div class="field form-group mb-3">
