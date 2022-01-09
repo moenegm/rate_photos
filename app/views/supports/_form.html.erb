@@ -11,34 +11,20 @@
     </div>
   <% end %>
 
-<select class="form-select" aria-label="Default select example">
-  <option selected>Open this select menu</option>
-  <option value="1">One</option>
-  <option value="2">Two</option>
-  <option value="3">Three</option>
-</select>
-
-
-  <div>
-    <%= form.label "Support Type", style: "display: block" %>
-    <%= form.select :name, options_for_select([["Select One", ""], "Bug", "Question", "Feedback", "Review", "Other"]), :class => 'genForm_dropBox' %>
+  <div class="mb-3">
+    <%= form.label "Support Type: ", class:"form-label" %>
+    <%= form.select :name, options_for_select([["Bug", ""], "Question", "Feedback", "Review", "Other"]), class: "form-select", id:"exampleFormControlInput1" %>
   </div>
 
-  <div>
-    <%= form.label :content, style: "display: block" %>
-    <%= form.rich_text_area :content %>
-  </div>
-
-  <div>
-    <%= form.label :status, style: "display: block" %>
-    <%= form.check_box :status %>
+  <div class="mb-3">
+    <%= form.rich_text_area :content, class:"form-control", id:"exampleFormControlTextarea1", rows:"3", placeholder:"Please provide as much details as possible"  %>
   </div>
 
   <div class="field form-group mb-3">
-    <%= form.number_field :user_id, id: :support_user_id, class:"form-control", value:current_user.id%>
+    <%= form.number_field :user_id, id: :support_user_id, class:"form-control", value:current_user.id, type: :hidden%>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="actions d-grid gap-2 mb-3"">
+    <%= form.submit class:"btn btn-primary" %>
   </div>
 <% end %>

@@ -1,6 +1,9 @@
 //= require actiontext
-@import "./actiontext.scss";
-@import "trix";
+
+@import 'trix/dist/trix.css';
+
+@import 'actiontext';
+
 // Custom bootstrap variables must be set or imported *before* bootstrap.
  .img {
     width: 300px; /* You can set the dimensions to whatever you want */

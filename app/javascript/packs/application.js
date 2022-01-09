@@ -4,5 +4,11 @@
 // that code so it'll be compiled.
 //= require local-time
 
+//= require_tree .
+
+import "trix";
+import "@rails/actiontext";
 import "@hotwired/turbo-rails";
 import "controllers";
+import "@rails/actionable";
+import "@rails/activestorage";

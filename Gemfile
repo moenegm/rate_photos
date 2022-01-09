@@ -15,6 +15,8 @@ gem 'devise', '~> 4.8'
 gem 'aws-sdk', '~> 3', require: false
 gem 'importmap-rails'
 gem 'local_time'
+gem 'image_processing'
+gem "sprockets-rails"
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -34,3 +36,5 @@ group :test do
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem "hotwire-rails", "~> 0.1.3"
