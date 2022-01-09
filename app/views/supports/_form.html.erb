@@ -1,6 +1,6 @@
 <%= form_with(model: support) do |form| %>
   <% if support.errors.any? %>
-    <div id="error_explanation">
+    <div style="color: red">
       <h2><%= pluralize(support.errors.count, "error") %> prohibited this support from being saved:</h2>
 
       <ul>
@@ -11,22 +11,19 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :type %>
-    <%= form.text_field :type %>
+  <div class="mb-3">
+    <%= form.select :support_type, options_for_select([["Select Support Type", ""], "Bug", "Question", "Feedback", "Review", "Other"]), class: "form-select", id:"exampleFormControlInput1" %>
   </div>
 
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.rich_text_area :content %>
+  <div class="mb-3" data-controller="trix">
+    <%= form.rich_text_area :content, class:"form-control", id:"exampleFormControlTextarea1", rows:"3", placeholder:"Please provide as much details as possible"  %>
   </div>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
+  <div class="field form-group mb-3">
+    <%= form.number_field :user_id, id: :support_user_id, class:"form-control", value:current_user.id, type: :hidden%>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="actions d-grid gap-2 mb-3"">
+    <%= form.submit class:"btn btn-primary" %>
   </div>
 <% end %>

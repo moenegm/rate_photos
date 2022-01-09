@@ -8,6 +8,7 @@ class User < ApplicationRecord
 
   has_many :posts
   has_many :ratings
+  has_many :supports
 
   #validations
   validates :first_name, presence: true

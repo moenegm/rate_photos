@@ -1,19 +1,37 @@
-<p id="notice"><%= notice %></p>
+</br>
+</br>
+<%= link_to "Back to supports", supports_path, class: "nounderline bi bi-arrow-left mb-3", style: "font-size: 1.2rem; color: cornflowerblue;" %>
+</br>
+</br>
+<div class="card mb-5">
+  <div class="card-header">
+    <div class="row">
+      <div class="col">
+        <%= @support.support_type %>
+      </div>
+      <div class="col text-end">
+        From: <%= link_to "#{User.find(@support.user_id).first_name} #{User.find(@support.user_id).last_name}", user_path(@support.id), class:"nounderline"%>
+      </div>
+    </div>
+  </div>
 
-<p>
-  <strong>Type:</strong>
-  <%= @support.type %>
-</p>
+  <div class="card-body">
+    <%= @support.content %>
+  </div>
 
-<p>
-  <strong>Content:</strong>
-  <%= @support.content %>
-</p>
+  <div class="card-footer text-muted">
+    <div class="row">
+      <div class="col">
+        <%#= link_to "Show this support", support, class:"btn btn-outline-secondary btn-sm" %>
+      </div>
+      <div class="col text-end">
+        Posted: <%= time_tag @support.created_at, "data-local": "time-ago" %>
+      </div>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>User:</strong>
-  <%= @support.user_id %>
-</p>
-
-<%= link_to 'Edit', edit_support_path(@support) %> |
-<%= link_to 'Back', supports_path %>
+<% if user_signed_in? && @support.user_id == current_user.id%>
+  <%= link_to 'Edit', edit_support_path(@support), class:"btn btn-outline-secondary" %>
+  <%= link_to 'Delete', @support, :method => :delete, :confirm => "Are you sure?", class:"btn btn-outline-danger" %>
+<% end %>
