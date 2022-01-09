@@ -6,7 +6,7 @@
           <%= support.name %>
         </div>
         <div class="col text-end">
-          From: <%= link_to "#{User.find(support.user_id).first_name} #{User.find(support.user_id).first_name}", user_path(support.id), class:"nounderline"%>
+          From: <%= link_to "#{User.find(support.user_id).first_name} #{User.find(support.user_id).last_name}", user_path(support.id), class:"nounderline"%>
         </div>
       </div>
     </div>
