@@ -1,0 +1,19 @@
+//= require actiontext
+
+.img {
+    width: 300px; /* You can set the dimensions to whatever you want */
+    height: 300px;
+    object-fit: cover;
+}
+
+.avatar {
+    width: 200px; /* You can set the dimensions to whatever you want */
+    height: 200px;
+    border-radius: 50%;
+    margin: auto;
+    object-fit: cover;
+}
+
+.nounderline {
+  text-decoration: none !important
+}
