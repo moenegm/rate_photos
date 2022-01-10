@@ -24,7 +24,7 @@
         <% if !post_rated_users(@rating_user_id).include?(current_user.id) %>
           <%= render 'rating', post: @post %>
         <% elsif  post_rated_users(@rating_user_id).include?(current_user.id) %>
-          <div class="card-footer text-center">
+          <div class="card-footer text-center mb-3">
             <%= "You have already gave this post a #{already_post_rating(@rating_user_id)} rating"%>
           </div>
         <% end %> 

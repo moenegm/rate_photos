@@ -9,8 +9,11 @@
       <div class="col">
         <%= @support.support_type %>
       </div>
+      <div class="col text-center">
+        < <%= @support.id %> >
+      </div>
       <div class="col text-end">
-        From: <%= link_to "#{User.find(@support.user_id).first_name} #{User.find(@support.user_id).last_name}", user_path(@support.id), class:"nounderline"%>
+        <%= link_to "#{User.find(@support.user_id).first_name} #{User.find(@support.user_id).last_name}", user_path(@support.user_id), class:"nounderline"%>
       </div>
     </div>
   </div>
@@ -23,6 +26,9 @@
     <div class="row">
       <div class="col">
         <%#= link_to "Show this support", support, class:"btn btn-outline-secondary btn-sm" %>
+      </div>
+      <div class="col text-center">
+        < <%= @support.id %> >
       </div>
       <div class="col text-end">
         Posted: <%= time_tag @support.created_at, "data-local": "time-ago" %>
