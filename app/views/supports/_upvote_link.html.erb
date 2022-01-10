@@ -1,0 +1,9 @@
+<%= content_tag "div", id: "upvote-#{support.id}" do %>
+  <%= link_to upvote_support_path(support), method: :patch, remote: true, data: { disable_with: "voting..." } do %>
+    <% if current_user.voted_up_on? support %>
+      <i class="bi bi-hand-thumbs-up-fill", style="font-size: 1.5rem;"></i>
+    <% else %>
+      <i class="bi bi-hand-thumbs-up", style="font-size: 1.5rem;"></i>
+    <% end %>
+  <% end %>
+<% end %>

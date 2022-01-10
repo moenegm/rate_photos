@@ -2,31 +2,49 @@
 </br>
 <%= link_to '+ New Support Post', new_support_path, class:"btn btn-secondary mb-3" %>
 <% @supports.each do |support| %>
-  <div class="card mb-4">
-    <div class="card-header">
-      <div class="row">
-        <div class="col">
-          <%= support.support_type %>
+  
+    <div class="row mb-4 align-items-start">
+
+      <div class="col-auto ">
+        <div class="col text-center ">
+          <% if current_user %>
+            <br>
+            <%= render 'supports/upvote_link', support: support %>
+            <%= render 'supports/like_count', support: support %>
+            <%= render 'supports/downvote_link', support: support %>
+          <% end %>
         </div>
-        <div class="col text-end">
-          From: <%= link_to "#{User.find(support.user_id).first_name} #{User.find(support.user_id).last_name}", user_path(support.id), class:"nounderline"%>
+      </div>
+
+      <div class="col">
+        <div class="card">
+          <div class="card-header">
+            <div class="row">
+              <div class="col">
+                <%= support.support_type %>
+              </div>
+              <div class="col text-end">
+                From: <%= link_to "#{User.find(support.user_id).first_name} #{User.find(support.user_id).last_name}", user_path(support.id), class:"nounderline"%>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <%= support.body %></br>
+          </div>
+
+          <div class="card-footer text-muted">
+            <div class="row">
+              <div class="col">
+                <%= link_to "Show this support", support, class:"btn btn-outline-secondary btn-sm" %>
+              </div>
+              <div class="col text-end">
+                Published <%= local_time_ago(support.created_at) %>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="card-body">
-      <%= support.body %></br>
-    </div>
-
-    <div class="card-footer text-muted">
-      <div class="row">
-        <div class="col">
-          <%= link_to "Show this support", support, class:"btn btn-outline-secondary btn-sm" %>
-        </div>
-        <div class="col text-end">
-          Published <%= local_time_ago(support.created_at) %>
-        </div>
-      </div>
-    </div>
-  </div>
 <% end %>    

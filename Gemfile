@@ -15,6 +15,7 @@ gem 'devise', '~> 4.8'
 gem 'aws-sdk', '~> 3', require: false
 gem 'image_processing', '~> 1.2'
 gem 'local_time'
+gem 'acts_as_votable'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

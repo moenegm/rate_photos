@@ -60,6 +60,7 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
       zeitwerk (~> 2.3)
+    acts_as_votable (0.13.2)
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
     aws-eventstream (1.2.0)
@@ -1438,6 +1439,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts_as_votable
   aws-sdk (~> 3)
   bootsnap (>= 1.4.4)
   byebug
