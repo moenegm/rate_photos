@@ -1,12 +1,5 @@
-</br>
-</br>
-<div class="col align-self-center card">   
-    <div class="field form-group mb-3"> 
+<div class="col align-self-center card mb-3">   
         <%= form_for [@post] do |f| %>
-            <div class="card-header text-center">
-                Rate The Photo
-            </div>
-
             <div class="card-body text-center">        
                 <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
                     <%= f.radio_button :ratings, 1, :type => "radio", :class => "btn-check", :name => "ratings", :id => "btnradio1", :autocomplete => "off" %>
@@ -28,9 +21,8 @@
 
             <div class="card-footer">
                 <div class="actions d-grid gap-2 mb-3"">
-                    <%=f.submit "Rate", :class => "btn btn-secondary" %>
+                    <%=f.submit "Rate This Photo", :class => "btn btn-secondary" %>
                 </div>
             </div>
         <% end %>
-    </div>
 </div>

@@ -10,21 +10,10 @@ class PostsController < ApplicationController
 
   # GET /posts/1 or /posts/1.json
   def show
+    @posts = Post.joins('LEFT JOIN (SELECT post_id, AVG(rating) avg_rating, COUNT(rating) rating_count FROM ratings GROUP BY post_id) r ON r.post_id = posts.id').order('r.avg_rating DESC, r.rating_count DESC')
+
     @rating_user_id = Rating.where("post_id = ?", params[:id]).select( "user_id, rating")
     @post = Post.find(params[:id])
-
-    begin
-      @next = Post.find((params[:id]).to_i + 1) 
-    rescue ActiveRecord::RecordNotFound => e
-      @next = Post.first
-    end
-
-    begin
-      @previous = Post.find((params[:id]).to_i - 1)
-    rescue ActiveRecord::RecordNotFound => e
-      @previous = Post.last
-    end
-
     @rate = @post.ratings.all.average(:rating)
     @ratecount = @post.ratings.all.count(:rating)
   end

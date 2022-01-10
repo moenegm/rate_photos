@@ -1,20 +1,39 @@
 </br>
-
-
-
 <div class="container">
   <div class="row">
-    <div class="col">
+    <div class="col-md">
       <div class="card text-center">
-        <div class="card-body">
-          <%= image_tag @post.image, style: "max-width: 100%; min-width: 300px;}" %>
-        </div>
         <div class="card-footer">
           <%= "Rating: #{@rate}(#{@ratecount})" %>
         </div>
+        <div class="card-body">
+          <%= image_tag @post.image, style: "max-width: 100%; min-width: 300px;}" %>
+        </div>
       </div>
     </div>
-    <div class="col">
+    <div class="col-md-auto">
+      <div class="row">
+        <div class="col">
+          <%= link_to "", prev("prev"), class: "bi bi-arrow-left", style: "font-size: 3rem; color: cornflowerblue;" %>
+        </div>
+        <div class="col text-end">
+          <%= link_to "", nxt("nxt") , class: "bi bi-arrow-right", style: "font-size: 3rem; color: cornflowerblue;" %>
+        </div>
+      </div>
+      <% if user_signed_in? %>
+        <% if !post_rated_users(@rating_user_id).include?(current_user.id) %>
+          <%= render 'rating', post: @post %>
+        <% elsif  post_rated_users(@rating_user_id).include?(current_user.id) %>
+          <div class="card-footer text-center">
+            <%= "You have already gave this post a #{already_post_rating(@rating_user_id)} rating"%>
+          </div>
+        <% end %> 
+      <% elsif !user_signed_in? %>      
+        <div class="card-footer text-center">
+          Please sign in to rate some photos 
+          <%= link_to "Sign in", new_user_session_path, class:"nav-link" %>
+        </div>   
+      <% end %> 
       <table class="table table-striped">
         <tbody>
           <tr>
@@ -64,38 +83,7 @@
           <% end %>
 
         </tbody>
-      </table>
-      <div class="row">
-        <div class="col">
-          <% if @previous %>
-            <%= link_to "", @previous, class: "bi bi-arrow-left", style: "font-size: 3rem; color: cornflowerblue;" %>
-          <% end %>
-        </div>
-        <div class="col text-end">
-          <% if @next %>
-            <%= link_to "", @next, class: "bi bi-arrow-right", style: "font-size: 3rem; color: cornflowerblue;" %>
-          <% end %>
-        </div>
-      </div>
-    
-
-      <% if user_signed_in? %>
-        <% if !post_rated_users(@rating_user_id).include?(current_user.id) %>
-          <%= render 'rating', post: @post %>
-        <% elsif  post_rated_users(@rating_user_id).include?(current_user.id) %>
-          <div class="card-footer text-center">
-            <%= "You have already gave this post a #{already_post_rating(@rating_user_id)} rating"%>
-          </div>
-        <% end %> 
-      <% elsif !user_signed_in? %>
-        
-        <div class="card-footer text-center">
-          Please sign in to rate some photos 
-          <%= link_to "Sign in", new_user_session_path, class:"nav-link" %>
-        </div>
-       
-      <% end %>       
-
+      </table>      
     </div>
   </div>
 </div>
