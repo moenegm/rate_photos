@@ -15,7 +15,7 @@
     </div>
 
     <div class="card-body">
-      <%= support.content %>
+      <%= support.content %></br>
     </div>
 
     <div class="card-footer text-muted">
@@ -24,7 +24,7 @@
           <%= link_to "Show this support", support, class:"btn btn-outline-secondary btn-sm" %>
         </div>
         <div class="col text-end">
-          Posted: <%= time_tag support.created_at, "data-local": "time-ago" %>
+          Published <%= local_time_ago(support.created_at) %>
         </div>
       </div>
     </div>
