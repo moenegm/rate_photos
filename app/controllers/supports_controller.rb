@@ -5,7 +5,7 @@ class SupportsController < ApplicationController
 
   # GET /supports or /supports.json
   def index
-    @supports = Support.all.order(status: :asc, cached_votes_score: :desc)
+    @supports = Support.all.order(status: :asc, cached_votes_score: :desc, support_type: :asc)
   end
 
   def upvote
