@@ -27,13 +27,7 @@
                 < <%= support.id %> >
               </div>
               <div class="col text-end">
-                <% user = User.find(support.user_id) %>
-                <% if user.admin %>
-                    <span title = "Admin" > <i class="bi bi-patch-check-fill" style= "font-size: 1.2rem; color: orange;"></i></span>
-                <% elsif user.verified %>
-                    <span title = "Verified" ><i class="bi bi-patch-check-fill" style= "font-size: 1.2rem; color: cornflowerblue"></i></span>
-                <% end %>
-                <%= link_to "#{user.first_name} #{user.last_name}", user_path(support.user_id), class:"nounderline"%>
+                <%= link_to name(support.user_id), user_path(support.user_id), class:"nounderline"%>
               </div>
             </div>
           </div>

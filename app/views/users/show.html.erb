@@ -7,13 +7,8 @@
     </div>
 
     <div class="row text-center">
-        <div class="col"> 
-            <% if @user.admin %>
-                <span title = "Admin" > <i class="bi bi-patch-check-fill" style= "font-size: 1.2rem; color: orange;"></i></span>
-            <% elsif @user.verified %>
-                <span title = "Verified" ><i class="bi bi-patch-check-fill" style= "font-size: 1.2rem; color: cornflowerblue"></i></span>
-            <% end %>
-            <span title = "Admin" ><%= "#{@user.first_name} #{@user.last_name}" %></span>
+        <div class="col mb-4"> 
+            <%= name(@user.id) %>
         </div>
     </div>
 
