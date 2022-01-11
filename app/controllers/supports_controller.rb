@@ -5,25 +5,47 @@ class SupportsController < ApplicationController
 
   # GET /supports or /supports.json
   def index
-    @supports = Support.all.order(cached_votes_score: :desc)
+    @supports = Support.all.order(status: :asc, cached_votes_score: :desc)
   end
 
   def upvote
     @support = Support.find(params[:id])
+
     if current_user.voted_up_on? @support
-      @support.unvote_by current_user
+      if current_user.admin
+        @support.unvote_by current_user
+        @support.update(status: "Pending")
+      else
+        @support.unvote_by current_user
+      end
     else
-      @support.upvote_by current_user
+      if current_user.admin
+        @support.upvote_by current_user
+        @support.update(status: "Resolved")
+      else
+        @support.upvote_by current_user
+      end      
     end
     render "vote.js.erb"
   end
 
   def downvote
     @support = Support.find(params[:id])
+
     if current_user.voted_down_on? @support
-      @support.unvote_by current_user
+      if current_user.admin
+        @support.unvote_by current_user
+        @support.update(status: "Pending")
+      else
+        @support.unvote_by current_user
+      end  
     else
-      @support.downvote_by current_user
+      if current_user.admin
+        @support.downvote_by current_user
+        @support.update(status: "Rejected")
+      else
+        @support.downvote_by current_user
+      end
     end
     render "vote.js.erb"
   end

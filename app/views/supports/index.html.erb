@@ -1,56 +1,106 @@
 </br>
 </br>
-<%= link_to '+ New Support Post', new_support_path, class:"btn btn-secondary mb-3" %>
-<% @supports.each do |support| %>
-  
+<% if user_signed_in? %>
+  <%= link_to '+ New Support Post', new_support_path, class:"btn btn-secondary mb-3" %>
+  <% @supports.each do |support| %>  
     <div class="row mb-4 align-items-start">
-
       <div class="col-auto ">
         <div class="col text-center ">
-          <% if current_user %>
-            <br>
+          <% if current_user && support.status == "Pending" && !current_user.admin%>
             <%= render 'supports/upvote_link', support: support %>
             <%= render 'supports/like_count', support: support %>
             <%= render 'supports/downvote_link', support: support %>
+          <% elsif current_user %>
+            <% if current_user.admin %>
+              <%= render 'supports/upvote_link', support: support %>
+              <%= render 'supports/like_count', support: support %>
+              <%= render 'supports/downvote_link', support: support %>
+            <% end %>
           <% end %>
         </div>
       </div>
 
-      <div class="col">
-        <div class="card">
-          <div class="card-header">
-            <div class="row">
-              <div class="col">
-                <%= support.support_type %>
-              </div>
-              <div class="col text-center">
-                <%= status(support.id) %>
-              </div>
-              <div class="col text-end">
-                <%= link_to name(support.user_id), user_path(support.user_id), class:"nounderline"%>
+      <% if !current_user.admin && (support.status == "Pending" || support.status == "Resolved") %>
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              <div class="row">
+                <div class="col">
+                  <%= support.support_type %>
+                </div>
+                <div class="col text-center">
+                  <%= status(support.id) %>
+                </div>
+                <div class="col text-end">
+                  <%= link_to name(support.user_id), user_path(support.user_id), class:"nounderline"%>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div class="card-body">
-            <%= support.body %></br>
-          </div>
+            <div class="card-body">
+              <%= support.body %></br>
+            </div>
 
-          <div class="card-footer text-muted">
-            <div class="row">
-              <div class="col">
-                <%= link_to "Show this support", support, class:"btn btn-outline-secondary btn-sm" %>
-              </div>
-              <div class="col text-center">
-                < <%= support.id %> >
-              </div>
-              <div class="col text-end">
-                Published <%= local_time_ago(support.created_at) %>
+            <div class="card-footer text-muted">
+              <div class="row">
+                <div class="col">
+                  <%= link_to "Show this support", support, class:"btn btn-outline-secondary btn-sm" %>
+                </div>
+                <div class="col text-center">
+                  < <%= support.id %> >
+                </div>
+                <div class="col text-end">
+                  Published <%= local_time_ago(support.created_at) %>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      <% end %>  
+        
+      <% if current_user.admin%>
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              <div class="row">
+                <div class="col">
+                  <%= support.support_type %>
+                </div>
+                <div class="col text-center">
+                  <%= status(support.id) %>
+                </div>
+                <div class="col text-end">
+                  <%= link_to name(support.user_id), user_path(support.user_id), class:"nounderline"%>
+                </div>
+              </div>
+            </div>
 
-<% end %>    
+            <div class="card-body">
+              <%= support.body %></br>
+            </div>
+
+            <div class="card-footer text-muted">
+              <div class="row">
+                <div class="col">
+                  <%= link_to "Show this support", support, class:"btn btn-outline-secondary btn-sm" %>
+                </div>
+                <div class="col text-center">
+                  < <%= support.id %> >
+                </div>
+                <div class="col text-end">
+                  Published <%= local_time_ago(support.created_at) %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>  
+        
+    </div>
+  <% end %>
+<% else %>
+  <div class="card text-center" style="background-color: lightgray;">
+    Please sign in to view the content of this page 
+    <%= link_to "Sign in", new_user_session_path, class:"nav-link" %>
+  </div>  
+<% end %>
