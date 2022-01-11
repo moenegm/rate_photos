@@ -14,7 +14,13 @@ class PostsController < ApplicationController
 
     @rating_user_id = Rating.where("post_id = ?", params[:id]).select( "user_id, rating")
     @post = Post.find(params[:id])
-    @rate = (@post.ratings.all.average(:rating)).round(2)
+    
+    if @post.ratings.all.average(:rating)
+      @rate = (@post.ratings.all.average(:rating)).round(2)
+    else
+      @rate = @post.ratings.all.average(:rating)
+    end
+
     @ratecount = @post.ratings.all.count(:rating)
   end
 
