@@ -8,10 +8,10 @@
 admin = User.create!(first_name: "admin", last_name: "Boss", email: "admin@test.com", password: "password", admin: true)
 admin.avatar.attach(io: File.open(Rails.root.join('app/assets/images/admin.webp')), filename: 'admin.webp')
 
-user_1 = User.create!(first_name: "user1", last_name: "user11", email: "user1@test.com", password: "password")
+user_1 = User.create!(first_name: "user1", last_name: "user11", verified: true, email: "user1@test.com", password: "password")
 user_1.avatar.attach(io: File.open(Rails.root.join('app/assets/images/user_1.jpeg')), filename: 'user_1.jpeg')
 
-user_2 = User.create!(first_name: "user2", last_name: "user22", email: "user2@test.com", password: "password")
+user_2 = User.create!(first_name: "user2", last_name: "user22", verified: true, email: "user2@test.com", password: "password")
 user_2.avatar.attach(io: File.open(Rails.root.join('app/assets/images/user_2.jpeg')), filename: 'user_2.jpeg')
 
 user_3 = User.create!(first_name: "user3", last_name: "user33", email: "user3@test.com", password: "password")

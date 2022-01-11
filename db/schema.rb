@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_10_214459) do
+ActiveRecord::Schema.define(version: 2022_01_11_031144) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -88,7 +88,7 @@ ActiveRecord::Schema.define(version: 2022_01_10_214459) do
     t.integer "cached_weighted_score", default: 0
     t.integer "cached_weighted_total", default: 0
     t.float "cached_weighted_average", default: 0.0
-    t.integer "status"
+    t.string "status", default: "Pending"
     t.index ["user_id"], name: "index_supports_on_user_id"
   end
 
@@ -106,6 +106,7 @@ ActiveRecord::Schema.define(version: 2022_01_10_214459) do
     t.date "birthday"
     t.integer "age"
     t.boolean "admin"
+    t.boolean "verified", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

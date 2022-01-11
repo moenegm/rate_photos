@@ -67,10 +67,13 @@
           <tr>
             <th scope="row">Photographer</th>
             <td>
-              <% first_name = User.find_by(id: (@post.user_id)).first_name %>
-              <% last_name = User.find_by(id: (@post.user_id)).last_name %>
-              <% photographer = first_name +" "+ last_name %>
-              <%= link_to "#{photographer}", user_path(@post.user_id), class:"nounderline"%>
+            <% user = User.find_by(id: (@post.user_id)) %>
+            <% if user.admin %>
+                <span title = "Admin" > <i class="bi bi-patch-check-fill" style= "font-size: 1.2rem; color: orange;"></i></span>
+            <% elsif user.verified %>
+                <span title = "Verified" ><i class="bi bi-patch-check-fill" style= "font-size: 1.2rem; color: cornflowerblue"></i></span>
+            <% end %>
+              <%= link_to "#{user.first_name} #{user.last_name}", user_path(@post.user_id), class:"nounderline"%>
             </td>
           </tr>
           <% if user_signed_in? && @post.user_id == current_user.id%>
