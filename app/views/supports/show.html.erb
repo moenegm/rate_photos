@@ -10,7 +10,7 @@
         <%= @support.support_type %>
       </div>
       <div class="col text-center">
-        < <%= @support.id %> >
+        <%= status(@support.id) %>
       </div>
       <div class="col text-end">
         <%= link_to name(@support.user_id), user_path(@support.user_id), class:"nounderline"%>
