@@ -5,6 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+admin = User.create!(first_name: "admin", last_name: "Boss", email: "admin@test.com", password: "password", admin: true)
+admin.avatar.attach(io: File.open(Rails.root.join('app/assets/images/admin.webp')), filename: 'admin.webp')
+
 user_1 = User.create!(first_name: "user1", last_name: "user11", email: "user1@test.com", password: "password")
 user_1.avatar.attach(io: File.open(Rails.root.join('app/assets/images/user_1.jpeg')), filename: 'user_1.jpeg')
 
