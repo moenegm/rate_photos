@@ -67,6 +67,7 @@ class SupportsController < ApplicationController
   # POST /supports or /supports.json
   def create
     @support = current_user.supports.build(support_params)
+    @support.update(content: @support.body.to_plain_text)
 
     respond_to do |format|
       if @support.save
